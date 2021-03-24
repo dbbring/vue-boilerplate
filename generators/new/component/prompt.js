@@ -1,5 +1,5 @@
-//const _ = require("lodash");
-import kebabCase from "lodash";
+/* eslint @typescript-eslint/no-var-requires: "off" */
+const _ = require("lodash");
 
 module.exports = [
   {
@@ -10,7 +10,7 @@ module.exports = [
       if (!value.length) {
         return "Components must have a name.";
       }
-      const fileName = kebabCase(value);
+      const fileName = _.kebabCase(value);
       if (fileName.indexOf("-") === -1) {
         return "Component names should contain at least two words to avoid conflicts with existing and future HTML elements.";
       }
