@@ -1,13 +1,13 @@
 module.exports = [
   {
-    type: "input",
-    name: "name",
-    message: "Name:",
+    type: 'input',
+    name: 'name',
+    message: 'Name:',
     validate(value) {
       if (!value.length) {
-        return "Layout components must have a name.";
+        return 'Layout components must have a name.'
       }
-      return true;
+      return true
     },
   },
-];
+]

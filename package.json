@@ -5,8 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit --passWithNoTests",
+    "lint:eslint": "eslint --fix",
+    "lint:stylelint": "stylelint --fix",
+    "lint:prettier": "prettier --write --loglevel warn",
+    "lint:all:eslint": "npm run lint:eslint './src/**/*.{ts,tsx,vue}'",
+    "lint:all:stylelint": "npm run lint:stylelint \"src/**/*.{vue,scss}\"",
+    "lint:all:prettier": "npm run lint:prettier \"**/*.{js,ts,json,css,scss,vue,html,md}\"",
+    "lint": "run-s lint:all:*",
     "new": "cross-env HYGEN_TMPLS=generators hygen new"
   },
   "dependencies": {
@@ -37,21 +43,23 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "hygen": "^6.0.4",
+    "imagemin-lint-staged": "^0.4.0",
     "lint-staged": "^9.5.0",
     "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",
+    "stylelint": "^13.12.0",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.3.0",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-scss": "^3.19.0",
     "typescript": "~4.1.5",
     "vue-cli-plugin-vuetify": "~2.3.1",
     "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
+    "pre-commit": "cross-env PRE_COMMIT=true lint-staged"
   }
 }
