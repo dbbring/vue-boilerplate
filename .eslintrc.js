@@ -4,7 +4,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:vue/recommended',
+    'plugin:vue/strongly-recommended',
     'eslint:recommended',
     '@vue/typescript/recommended',
     '@vue/prettier',
@@ -19,7 +19,7 @@ module.exports = {
     'no-debugger': process.env.PRE_COMMIT ? 'error' : 'off',
     // Only allow `console.log` in development
     'no-console': process.env.PRE_COMMIT
-      ? ['error', { allow: ['warn', 'error'] }]
+      ? ['error', {allow: ['warn', 'error']}]
       : 'off',
     'vue/array-bracket-spacing': 'error',
     'vue/arrow-spacing': 'error',
@@ -32,10 +32,25 @@ module.exports = {
     'vue/eqeqeq': 'error',
     'vue/key-spacing': 'error',
     'vue/keyword-spacing': 'error',
+    'vue/match-component-file-name': [
+      'error',
+      {
+        extensions: ['vue'],
+        shouldMatchCase: true,
+      },
+    ],
     'vue/no-boolean-default': ['error', 'default-false'],
     'vue/no-deprecated-scope-attribute': 'error',
     'vue/no-empty-pattern': 'error',
+    'vue/no-reserved-component-names': 'error',
+    'vue/no-use-v-if-with-v-for': [
+      'error',
+      {
+        allowUsingIterationVar: true,
+      },
+    ],
     'vue/object-curly-spacing': ['error', 'always'],
+    'vue/require-name-property': 'error',
     'vue/padding-line-between-blocks': 'error',
     'vue/space-infix-ops': 'error',
     'vue/space-unary-ops': 'error',
@@ -49,6 +64,26 @@ module.exports = {
       },
     ],
     'vue/valid-v-slot': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        arrowParens: 'always',
+        bracketSpacing: false,
+        endOfLine: 'lf',
+        htmlWhitespaceSensitivity: 'strict',
+        jsxBracketSameLine: true,
+        jsxSingleQuote: false,
+        printWidth: 80,
+        proseWrap: 'never',
+        quoteProps: 'consistent',
+        semi: true,
+        singleQuote: true,
+        tabWidth: 2,
+        trailingComma: 'es5',
+        useTabs: false,
+        vueIndentScriptAndStyle: false,
+      },
+    ],
   },
   overrides: [
     {
@@ -61,4 +96,4 @@ module.exports = {
       },
     },
   ],
-}
+};
